@@ -9,13 +9,13 @@ internal class SAAboutViewModel
     public string SAVersion => AppInfo.VersionString;
     public string SAMoreInfoUrl => "https://aka.ms/maui";
     public string SAMessage => "This app is written in XAML and C# with .NET MAUI.";
-    public ICommand ShowMoreInfoCommand { get; }
+    public ICommand SAShowMoreInfoCommand { get; }
 
     public SAAboutViewModel()
     {
-        ShowMoreInfoCommand = new AsyncRelayCommand(ShowMoreInfo);
+        SAShowMoreInfoCommand = new AsyncRelayCommand(SAShowMoreInfo);
     }
 
-    async Task ShowMoreInfo() =>
+    async Task SAShowMoreInfo() =>
         await Launcher.Default.OpenAsync(SAMoreInfoUrl);
 }

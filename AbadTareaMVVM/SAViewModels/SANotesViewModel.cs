@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using AbadTareaMVVM.SAModels;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -7,15 +6,15 @@ namespace AbadTareaMVVM.SAViewModels;
 
 internal class SANotesViewModel : IQueryAttributable
 {
-    public ObservableCollection<SAViewModels.SANoteViewModel> AllNotes { get; }
+    public ObservableCollection<SANoteViewModel> AllNotes { get; }
     public ICommand NewCommand { get; }
     public ICommand SelectNoteCommand { get; }
 
     public SANotesViewModel()
     {
-        AllNotes = new ObservableCollection<SAViewModels.SANoteViewModel>(SAModels.SANote.LoadAll().Select(n => new SANoteViewModel(n)));
+        AllNotes = new ObservableCollection<SANoteViewModel>(SAModels.SANote.LoadAll().Select(n => new SANoteViewModel(n)));
         NewCommand = new AsyncRelayCommand(NewNoteAsync);
-        SelectNoteCommand = new AsyncRelayCommand<SAViewModels.SANoteViewModel>(SelectNoteAsync);
+        SelectNoteCommand = new AsyncRelayCommand<SANoteViewModel>(SelectNoteAsync);
     }
 
     private async Task NewNoteAsync()
@@ -23,7 +22,7 @@ internal class SANotesViewModel : IQueryAttributable
         await Shell.Current.GoToAsync(nameof(SAViews.SANotePage));
     }
 
-    private async Task SelectNoteAsync(SAViewModels.SANoteViewModel note)
+    private async Task SelectNoteAsync(SANoteViewModel note)
     {
         if (note != null)
             await Shell.Current.GoToAsync($"{nameof(SAViews.SANotePage)}?load={note.SAIdentifier}");
