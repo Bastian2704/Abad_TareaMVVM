@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:saviewModels="clr-namespace:AbadTareaMVVM.SAViewModels"
+             x:Class="AbadTareaMVVM.SAViews.SAAboutPage">
+    <ContentPage.BindingContext>
+        <saviewModels:SAAboutViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="10" Margin="10">
+        <HorizontalStackLayout Spacing="10">
+            <Image Source="dotnet_bot.png"
+                   SemanticProperties.Description="The dot net bot waving hello!"
+                   HeightRequest="64" />
+            <Label FontSize="22" FontAttributes="Bold" Text="{Binding SATitle}" VerticalOptions="End" />
+            <Label FontSize="22" Text="{Binding SAVersion}" VerticalOptions="End" />
+        </HorizontalStackLayout>
+
+        <Label Text="{Binding SAMessage}" />
+        <Button Text="Learn more..." Command="{Binding SAShowMoreInfoCommand}" />
+    </VerticalStackLayout>
+
+</ContentPage>

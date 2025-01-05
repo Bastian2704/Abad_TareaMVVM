@@ -57,9 +57,50 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\icon_about.png" />
+	  <None Remove="Resources\Images\icon_about_ios.png" />
+	  <None Remove="Resources\Images\icon_notes.png" />
+	  <None Remove="Resources\Images\icon_notes_ios.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="SAApp.xaml.cs">
+	    <DependentUpon>SAApp.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="SAAppShell.xaml.cs">
+	    <DependentUpon>SAAppShell.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="SAMainPage.xaml.cs">
+	    <DependentUpon>SAMainPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="SAViews\SAAboutPage.xaml.cs">
+	    <DependentUpon>SAAboutPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="SAViews\SAAllNotesPage.xaml.cs">
+	    <DependentUpon>SAAllNotesPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="SAViews\SANotePage.xaml.cs">
+	    <DependentUpon>SANotePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="SAViews\SAAboutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SAViews\SAAllNotesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SAViews\SANotePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
